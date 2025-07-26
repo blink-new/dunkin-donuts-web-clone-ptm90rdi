@@ -1,21 +1,17 @@
-import { Header } from './components/Header'
-import { Hero } from './components/Hero'
-import { FeaturedFlavors } from './components/FeaturedFlavors'
-import { About } from './components/About'
-import { Contact } from './components/Contact'
-import { Footer } from './components/Footer'
+import React, { useState } from 'react'
+import LandingPage from './components/LandingPage'
+import ScoopPage from './components/ScoopPage'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<'landing' | 'scoop'>('landing')
+
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <FeaturedFlavors />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-pink-50">
+      {currentPage === 'landing' ? (
+        <LandingPage onScoopNow={() => setCurrentPage('scoop')} />
+      ) : (
+        <ScoopPage onBack={() => setCurrentPage('landing')} />
+      )}
     </div>
   )
 }
