@@ -18,7 +18,9 @@ export default function ScoopPage({ onBack }: ScoopPageProps) {
   })
   
   const pricePerScoop = 12.99
-  const totalPrice = scoops * pricePerScoop
+  const shippingTax = 5.00
+  const subtotal = scoops * pricePerScoop
+  const totalPrice = subtotal + shippingTax
 
   const handleAddressChange = (field: string, value: string) => {
     setAddress(prev => ({ ...prev, [field]: value }))
@@ -102,9 +104,19 @@ export default function ScoopPage({ onBack }: ScoopPageProps) {
                 <span className="text-gray-700">Price per scoop:</span>
                 <span className="font-semibold text-gray-800">${pricePerScoop}</span>
               </div>
-              <div className="flex justify-between items-center text-xl font-bold">
-                <span className="text-gray-800">Total:</span>
-                <span className="text-pink-600 text-3xl">${totalPrice.toFixed(2)}</span>
+              <div className="flex justify-between items-center text-lg mb-2">
+                <span className="text-gray-700">Subtotal:</span>
+                <span className="font-semibold text-gray-800">${subtotal.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between items-center text-lg mb-2">
+                <span className="text-gray-700">Shipping:</span>
+                <span className="font-semibold text-gray-800">${shippingTax.toFixed(2)}</span>
+              </div>
+              <div className="border-t border-pink-200 pt-2 mt-2">
+                <div className="flex justify-between items-center text-xl font-bold">
+                  <span className="text-gray-800">Total:</span>
+                  <span className="text-pink-600 text-3xl">${totalPrice.toFixed(2)}</span>
+                </div>
               </div>
             </div>
 
@@ -171,9 +183,19 @@ export default function ScoopPage({ onBack }: ScoopPageProps) {
 
             {/* Order Summary */}
             <div className="bg-pink-50 rounded-2xl p-6 mb-8">
-              <div className="flex justify-between items-center text-xl font-bold">
-                <span className="text-gray-800">Order Total:</span>
-                <span className="text-pink-600">${totalPrice.toFixed(2)}</span>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-700">Subtotal:</span>
+                <span className="font-semibold">${subtotal.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-700">Shipping:</span>
+                <span className="font-semibold">${shippingTax.toFixed(2)}</span>
+              </div>
+              <div className="border-t border-pink-200 pt-2 mt-2">
+                <div className="flex justify-between items-center text-xl font-bold">
+                  <span className="text-gray-800">Order Total:</span>
+                  <span className="text-pink-600">${totalPrice.toFixed(2)}</span>
+                </div>
               </div>
               <p className="text-gray-600 mt-2">{scoops} {scoops === 1 ? 'Scoop' : 'Scoops'} × ${pricePerScoop}</p>
             </div>
@@ -296,9 +318,19 @@ export default function ScoopPage({ onBack }: ScoopPageProps) {
               <span className="text-gray-700">Payment:</span>
               <span className="font-semibold capitalize">{paymentMethod}</span>
             </div>
-            <div className="flex justify-between items-center text-xl font-bold">
-              <span className="text-gray-800">Total:</span>
-              <span className="text-pink-600">${totalPrice.toFixed(2)}</span>
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-gray-700">Subtotal:</span>
+              <span className="font-semibold">${subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-gray-700">Shipping:</span>
+              <span className="font-semibold">${shippingTax.toFixed(2)}</span>
+            </div>
+            <div className="border-t border-pink-200 pt-2 mt-2">
+              <div className="flex justify-between items-center text-xl font-bold">
+                <span className="text-gray-800">Total:</span>
+                <span className="text-pink-600">${totalPrice.toFixed(2)}</span>
+              </div>
             </div>
           </div>
 
